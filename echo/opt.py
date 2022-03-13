@@ -1,4 +1,4 @@
-from echo.utils import get_GCDFT, get_fmax, get_nelect_neu_ase, get_nelect_incar 
+from echo.utils import get_GCDFT, get_fmax, get_nelect_neu_pp, get_nelect_incar 
 from ase.db import connect
 from ase.io import read, write
 from ase.calculators.vasp import Vasp
@@ -77,11 +77,11 @@ def opt_fix_pot(atoms, label='tmp', pot_target=0.0, pot_ref=4.6, pot_step=None, 
     if restart_traj and 'charge' in atoms_opt.calc.todict().keys():
         charge_now = atoms_opt.calc.todict()['charge']
         atoms_opt.set_calculator(mycalc)
-        nelect_neu = get_nelect_neu_ase(atoms_opt)
+        nelect_neu = get_nelect_neu_pp(atoms_opt)
         print(f'Charge state read from trajectory: {charge_now:.4f} |e|')
     else:
         atoms_opt.set_calculator(mycalc)
-        nelect_neu = get_nelect_neu_ase(atoms_opt)
+        nelect_neu = get_nelect_neu_pp(atoms_opt)
         try:
             nelect_now = get_nelect_incar(label)
             charge_now = nelect_neu-nelect_now
@@ -94,6 +94,8 @@ def opt_fix_pot(atoms, label='tmp', pot_target=0.0, pot_ref=4.6, pot_step=None, 
     if pot_step is None:
         pot_step = 0.002 * nelect_neu
         print(f'Potentiostat step set to {pot_step:.6f} |e|/V (NELECT_neu={nelect_neu:8.3f} |e|)')
+    
+    # Set calculator and start the run!
     atoms_opt.calc.set(charge=charge_now)
     traj_nelect = []
     traj_pot = []

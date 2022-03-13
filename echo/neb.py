@@ -1,6 +1,6 @@
 
 
-from echo.utils import get_rssd, get_nelect_neu_ase, get_GCDFT_neb
+from echo.utils import get_rssd, get_nelect_neu_pp, get_GCDFT_neb
 from ase.io import read, write
 from ase.db import connect
 from ase.calculators.vasp import Vasp
@@ -99,7 +99,7 @@ def neb_fix_pot(img_ini, img_fin, n_images=None, band_inp=None, chg_inp=None, po
     geom_tmp = img_ini.copy()
     geom_tmp.calc = Vasp()
     geom_tmp.calc.fromdict(calculator.todict())
-    nelect_neu = get_nelect_neu_ase(geom_tmp)
+    nelect_neu = get_nelect_neu_pp(geom_tmp)
 
     # Charge state along the band
     if restart_band:
@@ -170,7 +170,7 @@ def neb_fix_pot(img_ini, img_fin, n_images=None, band_inp=None, chg_inp=None, po
                         nelect_net=nelect_net_ini,
                         pot=pot_ini,
                         gcfe=gcfe_ini)
-                elif ii == n_images-1:
+                elif ii == n_images+1:
                     db.write(band[ii],
                         charge_net=-nelect_net_fin,
                         nelect_net=nelect_net_fin,

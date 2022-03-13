@@ -1,3 +1,4 @@
+from echo.data import pp_dict
 from ase.db import connect
 from ase.io import read, write
 from ase.calculators.vasp import Vasp
@@ -31,6 +32,28 @@ def get_nelect_neu_ase(atoms):
     nelect_neu = get_nelect_neu()
     for f in ['POSCAR', 'POTCAR', 'INCAR', 'KPOINTS', 'ase-sort.dat']:
         os.remove(f)
+    return nelect_neu
+
+def get_nelect_dict_pp(atoms, setting='recommended', pp_dir='potpaw_PBE'):
+    list_elems_unique = list(set(atoms.get_chemical_symbols()))
+    vasp_pp_path = os.environ['VASP_PP_PATH']
+    nelect_dict = {}
+    for elem in list_elems_unique:
+        try:
+            elem_pp = pp_dict[setting][elem]
+        except:
+            elem_pp = elem
+        nelect_dict[elem] = eval([l for l in open(f'{vasp_pp_path}/{pp_dir}/{elem_pp}/POTCAR').readlines() if 'ZVAL' in l][0].split()[5])
+    print(nelect_dict)
+    return nelect_dict
+
+
+def get_nelect_neu_pp(atoms, setting='recommended', pp_dir='potpaw_PBE'):
+    list_elems = atoms.get_chemical_symbols()
+    nelect_dict = get_nelect_dict_pp(atoms=atoms, setting=setting, pp_dir=pp_dir)
+    nelect_neu = 0
+    for elem in list_elems:
+        nelect_neu += nelect_dict[elem]
     return nelect_neu
 
 def get_nelect_incar(workdir):
