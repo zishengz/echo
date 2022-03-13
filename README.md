@@ -14,7 +14,14 @@
 
 ## Installation
 
-Simply download and unzip the tarball of the code, and then add the directory to your `PYTHONPATH`.
+Simply download and unzip the tarball of the code, and then add the directory to your `PYTHONPATH`:
+
+```bash
+wget https://github.com/zishengz/echo/archive/refs/heads/main.zip
+unzip main.zip
+export PYTHONPATH=$PYTHONPATH:`pwd`/echo-main
+```
+
 
 ## Tutorials
 
