@@ -89,7 +89,7 @@ def neb_fix_pot(img_ini, img_fin, n_images=None, band_inp=None, chg_inp=None, po
         if len(band_inp) == n_images:
             band = [img_ini] + band_inp + [img_fin]
         elif len(band_inp) == n_images+2:
-            band = [img_ini] + band_inp[1:-1] + [img_fin]
+            band = [img_ini] + band_inp[1:n_images+1] + [img_fin]
         else:
             print('Input band has wrong size! Check it pls')
             exit()
@@ -123,7 +123,7 @@ def neb_fix_pot(img_ini, img_fin, n_images=None, band_inp=None, chg_inp=None, po
 
     # Set CINEB band!
     cineb = NEB(band, climb=climb)
-    if not restart_band:
+    if not restart_band and band_inp is None:
         cineb.interpolate(method='idpp')
     write('band_init.db', band, append=False)
     rssd_img = [get_rssd(band[0], band[m])
@@ -133,7 +133,7 @@ def neb_fix_pot(img_ini, img_fin, n_images=None, band_inp=None, chg_inp=None, po
 
     # Set separate calculators for each image
     print('\nTransition state search')
-    for i in range(len(band)-2):
+    for i in range(n_images):
         band[i+1].calc = Vasp()
         band[i+1].calc.fromdict(calculator.asdict())
         band[i+1].calc.set(charge=-nelect_net_guess[i], directory=workdirs[i], txt='vasp.out', lreal='Auto')

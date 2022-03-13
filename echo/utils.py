@@ -63,7 +63,7 @@ def get_GCDFT(u_ref=4.6, poscar='POSCAR', potcar='POTCAR', dirName='.', outname=
 
 
 def get_GCDFT_neb(workdirs, u_ref=4.6, poscar='POSCAR', potcar='POTCAR', outname='vasp.out'):
-    nelect_neu = get_nelect_neu(f'img000/{poscar}', f'img000/{potcar}')
+    nelect_neu = get_nelect_neu(f'img001/{poscar}', f'img001/{potcar}')
     neb_nelect_net = []
     neb_u_she = []
     neb_energy_gcdft = []
