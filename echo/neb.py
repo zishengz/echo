@@ -45,8 +45,8 @@ def neb_fix_chg(img_ini, img_fin, n_images=None, band_inp=None, net_charge=0, cl
     cineb = NEB(band, climb=climb)
     if not restart_neb:
         cineb.interpolate(method='idpp')
-    optimizer = optimizer(cineb, trajectory='neb.traj', logfile='-')
-    optimizer.run(fmax=fmax, steps=steps)
+    nebopt = optimizer(cineb, trajectory='neb.traj', logfile='-')
+    nebopt.run(fmax=fmax, steps=steps)
     print('CONVERGED')
     write('neb-conv.db', band)
     return band
@@ -152,9 +152,9 @@ def neb_fix_pot(img_ini, img_fin, n_images=None, band_inp=None, chg_inp=None, po
     converged_forces = False
     converged_pot = False
     while not (converged_forces and converged_pot):
-        optimizer = optimizer(cineb,
+        nebopt = optimizer(cineb,
                         trajectory='neb.traj', logfile='neb.log')
-        optimizer.run(fmax=fmax, steps=nsteps_opt_now)
+        nebopt.run(fmax=fmax, steps=nsteps_opt_now)
         nelect_net_now, pot_now, energy_gcdft_now = get_GCDFT_neb(workdirs, pot_ref)
 
         traj_nelect.append(nelect_net_now)
@@ -163,10 +163,11 @@ def neb_fix_pot(img_ini, img_fin, n_images=None, band_inp=None, chg_inp=None, po
 
         # Write restart files
         with connect('restart.db', append=False) as db:
-            for ii in range(n_images):
-                if ii == 0 or ii == n_images-1:
+            for ii in range(n_images+2):
+                if ii == 0:
                     db.write(band[ii], 
-                        charge_net=-nelect_net_ini, nelect_net=nelect_net_ini,
+                        charge_net=-nelect_net_ini,
+                        nelect_net=nelect_net_ini,
                         pot=pot_ini,
                         gcfe=gcfe_ini)
                 elif ii == n_images-1:
