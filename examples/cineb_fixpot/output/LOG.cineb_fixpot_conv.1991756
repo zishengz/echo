@@ -1,0 +1,64 @@
+Ini state: NELECT_net=  -3.6193 |e|;  U_she=  -0.0009 V; GCFE_el=    -436.9315 eV
+Fin state: NELECT_net=  -3.5703 |e|;  U_she=   0.0002 V; GCFE_el=    -436.9229 eV
+Target potential: 0 V (SHE refernce: 4.6 V)
+n_images= 5 (from RXN RSSD=4.4638 A)
+CINEB directories: ['img001', 'img002', 'img003', 'img004', 'img005']
+Geometry: Starting from provided band
+Charge states: Restarting from scratch (linear CT interpolation)
+Net charges along the band: [-3.61113333 -3.60296667 -3.5948     -3.58663333 -3.57846667]
+Reaction coordinate (RSSD): [0.0, 21.6965, 21.7213, 21.7821, 21.8679, 26.7994, 4.4638] Å
+
+Transition state search
+
+FIX-POTENTIAL NEB (pot_target= 0, fmax=0.02, pot_conv= 0.001)
+Potentiostat step set to 3.172000 |e|/V (NELECT_neu=1586.000 |e|)
+
+Step    1: NELECT_net: [-3.6111, -3.603, -3.5948, -3.5866, -3.5785]
+Step    1: U_she: [0.016, 0.0101, -0.0034, 0.0014, 0.0026]
+Step    1: GCFE_el: [-436.6366, -436.1642, -436.5545, -436.7824, -436.8903]
+Conv    1: Potential [x] U_diff=   0.0160 V | Forces [x] F_max=   0.1612 eV/Å
+
+Step    2: NELECT_net: [-3.5604, -3.571, -3.6054, -3.5821, -3.5701]
+Step    2: U_she: [0.0051, 0.0023, -0.0018, 0.0002, 0.0007]
+Step    2: GCFE_el: [-436.6025, -436.1405, -436.561, -436.7794, -436.884]
+Conv    2: Potential [x] U_diff=   0.0051 V | Forces [x] F_max=   0.1332 eV/Å
+
+Step    3: NELECT_net: [-3.5443, -3.5638, -3.611, -3.5814, -3.5678]
+Step    3: U_she: [0.0023, 0.0011, -0.0013, -0.0006, -0.0005]
+Step    3: GCFE_el: [-436.5917, -436.1339, -436.5637, -436.777, -436.8806]
+Conv    3: Potential [x] U_diff=   0.0023 V | Forces [x] F_max=   0.1178 eV/Å
+
+Step    4: NELECT_net: [-3.5371, -3.5604, -3.615, -3.5832, -3.5693]
+Step    4: U_she: [0.0006, -0.0003, 0.0002, -0.0003, -0.0003]
+Step    4: GCFE_el: [-436.5867, -436.1314, -436.5665, -436.7782, -436.8817]
+Conv    4: Potential [o] U_diff=   0.0006 V | Forces [x] F_max=   0.1037 eV/Å
+
+Step    5: NELECT_net: [-3.5353, -3.5614, -3.6143, -3.584, -3.5701]
+Step    5: U_she: [-0.0018, -0.0007, -0.0015, 0.0002, -0.0016]
+Step    5: GCFE_el: [-436.5849, -436.1296, -436.5633, -436.7787, -436.8784]
+Conv    5: Potential [x] U_diff=   0.0018 V | Forces [x] F_max=   0.0514 eV/Å
+
+Step    6: NELECT_net: [-3.5409, -3.5636, -3.6192, -3.5834, -3.5753]
+Step    6: U_she: [-0.0011, 0.0002, -0.0001, -0.0006, 0.0005]
+Step    6: GCFE_el: [-436.5902, -436.1338, -436.5688, -436.7793, -436.8864]
+Conv    6: Potential [x] U_diff=   0.0011 V | Forces [x] F_max=   0.0473 eV/Å
+
+Step    7: NELECT_net: [-3.5444, -3.563, -3.6197, -3.5852, -3.5739]
+Step    7: U_she: [-0.0007, -0.0001, -0.0001, -0.0002, -0.0001]
+Step    7: GCFE_el: [-436.5922, -436.1331, -436.5687, -436.7809, -436.8845]
+Conv    7: Potential [o] U_diff=   0.0007 V | Forces [x] F_max=   0.0452 eV/Å
+
+Step    8: NELECT_net: [-3.5466, -3.5633, -3.6202, -3.5857, -3.5744]
+Step    8: U_she: [-0.0005, 0.0001, -0.0, 0.0006, 0.0002]
+Step    8: GCFE_el: [-436.5961, -436.1345, -436.5681, -436.7812, -436.8863]
+Conv    8: Potential [o] U_diff=   0.0006 V | Forces [x] F_max=   0.0344 eV/Å
+
+Step    9: NELECT_net: [-3.5481, -3.5629, -3.6203, -3.5838, -3.5739]
+Step    9: U_she: [-0.0005, 0.0, 0.0002, -0.0002, 0.0005]
+Step    9: GCFE_el: [-436.597, -436.1344, -436.5683, -436.7808, -436.8874]
+Conv    9: Potential [o] U_diff=   0.0005 V | Forces [o] F_max=   0.0196 eV/Å
+CONVERGED
+
+real	886m21.912s
+user	17099m35.697s
+sys	175m33.731s

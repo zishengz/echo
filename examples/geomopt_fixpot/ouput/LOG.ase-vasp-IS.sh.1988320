@@ -1,0 +1,14 @@
+VASP settings:
+{'encut': 400, 'sigma': 0.1, 'eb_k': 78.4, 'tau': 0, 'lambda_d_k': 3, 'ediff': 1e-05, 'algo': 'Fast', 'gga': 'RP', 'prec': 'Normal', 'ismear': 0, 'nelm': 300, 'npar': 4, 'lcharg': False, 'lsol': True, 'lreal': 'Auto', 'xc': 'rpbe', 'pp': 'PBE', 'setups': 'recommended', 'txt': '-', 'kpts': [1, 1, 1], 'gamma': True, 'reciprocal': False, 'ignore_constraints': False, 'charge': 0, 'custom': {}}
+Starting from input geometry...
+Charge state read from last INCAR: 3.6193 |e|
+
+FIX-POTENTIAL GEOMOPT (pot_target= 0.0, fmax=0.02, pot_conv= 0.001)
+Potentiostat step set to 3.172000 |e|/V (NELECT_neu=1586.000 |e|)
+Step    1: NELECT_net=  -3.6193 |e|;  U_she=  -0.0009 V; GCFE_el=    -436.9315 eV
+Conv    1: Potential [o] U_diff=  -0.0009 V | Forces [o] F_max=   0.0179 eV/Å
+CONVERGED
+
+real	6m3.381s
+user	17m9.550s
+sys	0m15.146s

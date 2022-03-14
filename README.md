@@ -35,4 +35,4 @@ The `VASP_COMMAND` would vary from machine to machine, depending on job schedule
 
 ## Tutorials
 
-Coming soon...
+See the `examples` folder.
