@@ -169,18 +169,21 @@ def neb_fix_pot(img_ini, img_fin, n_images=None, band_inp=None, chg_inp=None, po
                         charge_net=-nelect_net_ini,
                         nelect_net=nelect_net_ini,
                         pot=pot_ini,
-                        gcfe=gcfe_ini)
+                        gcfe=gcfe_ini,
+                        potene=band[ii].get_potential_energy())
                 elif ii == n_images+1:
                     db.write(band[ii],
                         charge_net=-nelect_net_fin,
                         nelect_net=nelect_net_fin,
                         pot=pot_fin,
-                        gcfe=gcfe_fin)
+                        gcfe=gcfe_fin,
+                        potene=band[ii].get_potential_energy())
                 else:
                     db.write(band[ii],
                         charge_net=-nelect_net_now[ii-1],
                         nelect_net=nelect_net_now[ii-1],
-                        pot=pot_now[ii-1], gcfe=energy_gcdft_now[ii-1],
+                        pot=pot_now[ii-1],
+                        gcfe=energy_gcdft_now[ii-1],
                         potene=band[ii].get_potential_energy())
         np.savetxt('restart.nelect_net', np.array(nelect_net_now))
 
