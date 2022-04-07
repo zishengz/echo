@@ -1,6 +1,7 @@
 from echo.data import pp_dict
 from ase.db import connect
 from ase.io import read, write
+from ase.geometry import find_mic
 from ase.calculators.vasp import Vasp
 import numpy as np
 import os
@@ -108,6 +109,8 @@ def get_rmsd(s, s_ref, list_ind=None):
         tmp = s.positions[list_ind] - s_ref.positions[list_ind]
     else:
         tmp = s.positions - s_ref.positions
+    if s.cell is not None and s.pbc is not None:
+        tmp, _ = find_mic(tmp, s.cell, s.pbc)
     tmp **= 2
     return np.sqrt(tmp.sum(axis=1).mean())
 
@@ -116,6 +119,8 @@ def get_rssd(s, s_ref, list_ind=None):
         tmp = s.positions[list_ind] - s_ref.positions[list_ind]
     else:
         tmp = s.positions - s_ref.positions
+    if s.cell is not None and s.pbc is not None:
+        tmp, _ = find_mic(tmp, s.cell, s.pbc)
     tmp **= 2
     return np.sqrt(tmp.sum(axis=1).sum())
 
