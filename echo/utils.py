@@ -41,7 +41,7 @@ def get_nelect_dict_pp(atoms, setting='recommended', pp_dir='potpaw_PBE'):
     nelect_dict = {}
     for elem in list_elems_unique:
         try:
-            elem_pp = pp_dict[setting][elem]
+            elem_pp = elem + pp_dict[setting][elem]
         except:
             elem_pp = elem
         nelect_dict[elem] = eval([l for l in open(f'{vasp_pp_path}/{pp_dir}/{elem_pp}/POTCAR').readlines() if 'ZVAL' in l][0].split()[5])
