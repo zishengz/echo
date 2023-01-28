@@ -24,7 +24,8 @@ vaspsol = Vasp(
     kpts=[1, 1, 1],
     charge=0,
     lsol=True, eb_k=78.4, tau=0, lambda_d_k=3,
-    setups='recommended')
+    setups='recommended',
+    )
 
 fn_inp = sys.argv[1]
 geom_inp = read(fn_inp)
