@@ -2,7 +2,11 @@
 
 **E**lectro-**Ch**emical **O**ptimizer
 
-`EChO` is an toolkit for local optimization and transition state search of electrochemical interfaces under a fixed electrode potential and in a grand canonical ensemble of electrons.
+`EChO` is an toolkit for exploring structure and dynamics of electrochemical surfaces/interfaces under a fixed electrode potential and within a grand canonical ensemble of electrons.
+
+Currently, `EChO` supports the following calculations at exact **FIXED-POTENTIAL**: local optimization, transition state search, molecular dynamics, and free energetics via thermodynamic integration.
+
+It is an external standalone code, interacting with VASP via ASE interface, needless of any extra and elaborate patching on VASP!
 
 Please make sure to cite the following papers if you use `EChO` in your research:
 
