@@ -35,7 +35,7 @@ langevin_fixpot(
     friction=0.1,
     label='md-fp',
     pot_target=0,
-     pot_step=1,
+    pot_step=1,
     pot_ref=4.6,
     potentiostat_nsteps=5,
     calculator=vaspsol
